@@ -1,0 +1,82 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script>
+        $(document).ready(function(){
+            api.getPosts();
+            api.getUsers();
+        })
+    </script>
+    <style>
+        .users:hover{
+            background-color: #ddeed9;
+        }
+        .post{
+            border-radius: 4px;
+            padding: 10px 20px;
+            border: 1px solid gray;
+            margin-top:4px;
+        }
+        .users{
+            border-radius: 4px;
+            margin-top:4px;
+            padding: 10px 20px;
+            border: 1px solid gray;
+            cursor: pointer;
+        }
+        .users.active{
+            background-color: lightgreen;
+        }
+        .like:hover{
+            border-radius: 4px;
+        }
+        .like{
+            color: white;
+            background: #00be00;
+            float:right;
+            width:20px;
+            height:20px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .like.dis{
+            background: #ff705a;
+        }
+        .like.all{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<table class="table">
+    <tr>
+        <td width="33%">
+            Добавление поста
+            <textarea placeholder="Введите текст поста . . ." class="form-control" id="add_post"></textarea>
+            <input type="button" onclick="api.addPost()" value="Сохранить" class="btn btn-success">
+        </td>
+        <td width="33%">
+            Список постов
+            <div id="posts"></div>
+        </td>
+        <td width="33%">
+            Добавление пользователя.<br>
+            Для возможности простановки лайков к постам необходимо добавить пользователя.<br>
+            Переключение между пользователями происходит по клику на их username<br>
+            <input placeholder="Введите имя пользователя . . ." type="text" class="form-control" id="add_user">
+            <input type="button" onclick="api.addUser()" value="Сохранить" class="btn btn-success">
+            <div>Список пользователей</div>
+            <div id="list_of_user">
+
+            </div>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
